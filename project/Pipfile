@@ -10,6 +10,7 @@ pytest-cov = "*"
 flake8 = "*"
 black = "==19.10b0"
 isort = "*"
+pytest-xdist = "*"
 
 [packages]
 fastapi = "*"
@@ -17,5 +18,6 @@ uvicorn = "*"
 asyncpg = "*"
 tortoise-orm = "*"
 gunicorn = "*"
+newspaper3k = "*"
 
 [requires]
