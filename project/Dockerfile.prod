@@ -24,11 +24,11 @@ RUN apt-get update \
   && apt-get clean
 
 # install python dependencies
-COPY ./Pipfile /home/app/Pipfile 
-# COPY ./Pipfile.lock /home/app/Pipfile.lock
 RUN pip install --upgrade pip
 RUN pip install pipenv
-RUN pipenv install --deploy --ignore-pipfile
+COPY ./Pipfile* $APP_HOME/
+RUN pipenv lock --requirements > requirements.txt
+RUN pip install -r requirements.txt
 
 # add app
 COPY . .
@@ -41,3 +41,4 @@ USER app
 
 # run gunicorn
 CMD gunicorn --bind 0.0.0.0:$PORT app.main:app -k uvicorn.workers.UvicornWorker
+# CMD tail -f /dev/null
