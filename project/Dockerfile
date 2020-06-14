@@ -15,10 +15,10 @@ RUN apt-get update \
 
 # install python dependencies
 COPY ./Pipfile /usr/src/app/Pipfile 
-# COPY ./Pipfile.lock /usr/src/app/Pipfile.lock
+COPY ./Pipfile.lock /usr/src/app/Pipfile.lock
 RUN pip install --upgrade pip
 RUN pip install pipenv
-RUN pipenv install --deploy --ignore-pipfile --dev
+RUN pipenv install --system --deploy --ignore-pipfile --dev
 
 # add entrypoint.sh
 COPY ./entrypoint.sh /usr/src/app/entrypoint.sh
