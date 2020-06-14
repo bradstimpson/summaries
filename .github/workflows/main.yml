@@ -61,7 +61,7 @@ jobs:
             -e ENVIRONMENT=dev \
             -e DATABASE_TEST_URL=sqlite://sqlite.db \
             -p 5003:8765 \
-            ${{ env.IMAGE }}:latest
+            docker.pkg.github.com/bradstimpson/summaries/web:latest
       - name: Pytest
         run: docker exec summaries python -m pytest .
       - name: Flake8
